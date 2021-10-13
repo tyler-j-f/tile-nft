@@ -1,0 +1,8 @@
+build/
+flattened/
+node_modules/
+.env*
+*.DS_Store
+# OpenZeppelin
+.openzeppelin/dev-*.json
+.openzeppelin/.session

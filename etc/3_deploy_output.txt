@@ -1,0 +1,270 @@
+ ✘ tylerfitzgerald@Tylers-MacBook-Pro  ~/projects/opensea-creatures   dev_through_oct_12 ±  DEPLOY_CREATURES_SALE=1 yarn truffle deploy --network rinkeby
+yarn run v1.22.13
+$ /Users/tylerfitzgerald/projects/opensea-creatures/node_modules/.bin/truffle deploy --network rinkeby
+
+Compiling your contracts...
+===========================
+✔ Fetching solc version list from solc-bin. Attempt #1
+> Compiling ./contracts/Creature.sol
+> Compiling ./contracts/CreatureAccessory.sol
+> Compiling ./contracts/CreatureAccessoryFactory.sol
+> Compiling ./contracts/CreatureAccessoryLootBox.sol
+> Compiling ./contracts/CreatureFactory.sol
+> Compiling ./contracts/CreatureLootBox.sol
+> Compiling ./contracts/ERC1155Tradable.sol
+> Compiling ./contracts/ERC721Tradable.sol
+> Compiling ./contracts/IFactoryERC1155.sol
+> Compiling ./contracts/IFactoryERC721.sol
+> Compiling ./contracts/LootBoxRandomness.sol
+> Compiling ./contracts/Migrations.sol
+> Compiling ./contracts/common/meta-transactions/ContentMixin.sol
+> Compiling ./contracts/common/meta-transactions/EIP712Base.sol
+> Compiling ./contracts/common/meta-transactions/Initializable.sol
+> Compiling ./contracts/common/meta-transactions/NativeMetaTransaction.sol
+> Compiling ./contracts/test/ApprovedSpenderContract.sol
+> Compiling ./contracts/test/MockProxyRegistry.sol
+> Compiling ./contracts/test/TestForReentrancyAttack.sol
+> Compiling openzeppelin-solidity/contracts/access/Ownable.sol
+> Compiling openzeppelin-solidity/contracts/security/ReentrancyGuard.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC1155/ERC1155.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC1155/IERC1155.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC1155/IERC1155Receiver.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC721/ERC721.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC721/IERC721.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC721/IERC721Receiver.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC721/extensions/ERC721Enumerable.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC721/extensions/IERC721Enumerable.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC721/extensions/IERC721Metadata.sol
+> Compiling openzeppelin-solidity/contracts/utils/Address.sol
+> Compiling openzeppelin-solidity/contracts/utils/Context.sol
+> Compiling openzeppelin-solidity/contracts/utils/Strings.sol
+> Compiling openzeppelin-solidity/contracts/utils/introspection/ERC165.sol
+> Compiling openzeppelin-solidity/contracts/utils/introspection/IERC165.sol
+> Compiling openzeppelin-solidity/contracts/utils/math/SafeMath.sol
+✔ Fetching solc version list from solc-bin. Attempt #1
+
+TypeError: More than 3 indexed arguments for event.
+  --> /Users/tylerfitzgerald/projects/opensea-creatures/contracts/CreatureFactory.sol:24:5:
+   |
+24 |     event Mint(
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Compilation failed. See above.
+Truffle v5.2.5 (core: 5.2.5)
+Node v12.18.4
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+ ✘ tylerfitzgerald@Tylers-MacBook-Pro  ~/projects/opensea-creatures   dev_through_oct_12 ±  DEPLOY_CREATURES_SALE=1 yarn truffle deploy --network rinkeby
+yarn run v1.22.13
+$ /Users/tylerfitzgerald/projects/opensea-creatures/node_modules/.bin/truffle deploy --network rinkeby
+
+Compiling your contracts...
+===========================
+✔ Fetching solc version list from solc-bin. Attempt #1
+> Compiling ./contracts/Creature.sol
+> Compiling ./contracts/CreatureAccessory.sol
+> Compiling ./contracts/CreatureAccessoryFactory.sol
+> Compiling ./contracts/CreatureAccessoryLootBox.sol
+> Compiling ./contracts/CreatureFactory.sol
+> Compiling ./contracts/CreatureLootBox.sol
+> Compiling ./contracts/ERC1155Tradable.sol
+> Compiling ./contracts/ERC721Tradable.sol
+> Compiling ./contracts/IFactoryERC1155.sol
+> Compiling ./contracts/IFactoryERC721.sol
+> Compiling ./contracts/LootBoxRandomness.sol
+> Compiling ./contracts/Migrations.sol
+> Compiling ./contracts/common/meta-transactions/ContentMixin.sol
+> Compiling ./contracts/common/meta-transactions/EIP712Base.sol
+> Compiling ./contracts/common/meta-transactions/Initializable.sol
+> Compiling ./contracts/common/meta-transactions/NativeMetaTransaction.sol
+> Compiling ./contracts/test/ApprovedSpenderContract.sol
+> Compiling ./contracts/test/MockProxyRegistry.sol
+> Compiling ./contracts/test/TestForReentrancyAttack.sol
+> Compiling openzeppelin-solidity/contracts/access/Ownable.sol
+> Compiling openzeppelin-solidity/contracts/security/ReentrancyGuard.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC1155/ERC1155.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC1155/IERC1155.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC1155/IERC1155Receiver.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC721/ERC721.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC721/IERC721.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC721/IERC721Receiver.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC721/extensions/ERC721Enumerable.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC721/extensions/IERC721Enumerable.sol
+> Compiling openzeppelin-solidity/contracts/token/ERC721/extensions/IERC721Metadata.sol
+> Compiling openzeppelin-solidity/contracts/utils/Address.sol
+> Compiling openzeppelin-solidity/contracts/utils/Context.sol
+> Compiling openzeppelin-solidity/contracts/utils/Strings.sol
+> Compiling openzeppelin-solidity/contracts/utils/introspection/ERC165.sol
+> Compiling openzeppelin-solidity/contracts/utils/introspection/IERC165.sol
+> Compiling openzeppelin-solidity/contracts/utils/math/SafeMath.sol
+✔ Fetching solc version list from solc-bin. Attempt #1
+> Compilation warnings encountered:
+
+    Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> /Users/tylerfitzgerald/projects/opensea-creatures/contracts/CreatureFactory.sol:132:9:
+    |
+132 |         address _from,
+    |         ^^^^^^^^^^^^^
+
+,Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> /Users/tylerfitzgerald/projects/opensea-creatures/contracts/CreatureFactory.sol:167:22:
+    |
+167 |     function ownerOf(uint256 _tokenId) public view returns (address _owner) {
+    |                      ^^^^^^^^^^^^^^^^
+
+
+> Artifacts written to /Users/tylerfitzgerald/projects/opensea-creatures/build/contracts
+> Compiled successfully using:
+   - solc: 0.8.9+commit.e5eed63a.Emscripten.clang
+
+
+> Duplicate contract names found for OwnableDelegateProxy.
+> This can cause errors and unknown behavior. Please rename one of your contracts.
+
+> Duplicate contract names found for ProxyRegistry.
+> This can cause errors and unknown behavior. Please rename one of your contracts.
+
+
+Migrations dry-run (simulation)
+===============================
+> Network name:    'rinkeby-fork'
+> Network id:      4
+> Block gas limit: 30000000 (0x1c9c380)
+
+
+1_initial_migrations.js
+=======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > block number:        9458507
+   > block timestamp:     1634137022
+   > account:             0x4fdF8DF271e1A65B119D858eeA2A7681da8F9c15
+   > balance:             13.31467741448490708
+   > gas used:            160372 (0x27274)
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.000320744 ETH
+
+   -------------------------------------
+   > Total cost:         0.000320744 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'Creature'
+   --------------------
+   > block number:        9458509
+   > block timestamp:     1634137031
+   > account:             0x4fdF8DF271e1A65B119D858eeA2A7681da8F9c15
+   > balance:             13.31063104848490708
+   > gas used:            1995869 (0x1e745d)
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.003991738 ETH
+
+
+   Deploying 'CreatureFactory'
+   ---------------------------
+   > block number:        9458510
+   > block timestamp:     1634137054
+   > account:             0x4fdF8DF271e1A65B119D858eeA2A7681da8F9c15
+   > balance:             13.30463946448490708
+   > gas used:            2995792 (0x2db650)
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.005991584 ETH
+
+   -------------------------------------
+   > Total cost:         0.009983322 ETH
+
+
+Summary
+=======
+> Total deployments:   3
+> Final cost:          0.010304066 ETH
+
+
+
+
+
+Starting migrations...
+======================
+> Network name:    'rinkeby'
+> Network id:      4
+> Block gas limit: 29970676 (0x1c950f4)
+
+
+1_initial_migrations.js
+=======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x5c25624d2a1b5f0f00ea9c9ac27a4abd2afe3c3cfabeb02a716f002e905849db
+   > Blocks: 1            Seconds: 16
+   > contract address:    0x9E125D4100fc34F85C92D2831e39fA16CfdfcecE
+   > block number:        9458510
+   > block timestamp:     1634137086
+   > account:             0x4fdF8DF271e1A65B119D858eeA2A7681da8F9c15
+   > balance:             13.31146471848490708
+   > gas used:            176672 (0x2b220)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00353344 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00353344 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'Creature'
+   --------------------
+   > transaction hash:    0x53341eace8e5bf15ee3c251f976670f02f0adf98513831343b37a632cda4c2c7
+   > Blocks: 0            Seconds: 12
+   > contract address:    0xaAA2e4884dBFD4Fa391d9592CaB330eFA7fd986d
+   > block number:        9458512
+   > block timestamp:     1634137116
+   > account:             0x4fdF8DF271e1A65B119D858eeA2A7681da8F9c15
+   > balance:             13.26815929848490708
+   > gas used:            2119557 (0x205785)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.04239114 ETH
+
+
+   Deploying 'CreatureFactory'
+   ---------------------------
+   > transaction hash:    0x8bd5f09ca5b70398f7bfaaedcc7f2508a6043371bd83781cf026a6fb27f87440
+   > Blocks: 1            Seconds: 12
+   > contract address:    0x50328Bb7E4cEE48B83532aC682BFF9f647D6Cb9e
+   > block number:        9458513
+   > block timestamp:     1634137131
+   > account:             0x4fdF8DF271e1A65B119D858eeA2A7681da8F9c15
+   > balance:             13.20065969848490708
+   > gas used:            3374980 (0x337f84)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0674996 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.10989074 ETH
+
+
+Summary
+=======
+> Total deployments:   3
+> Final cost:          0.11342418 ETH
+
+--------->
+
