@@ -72,13 +72,12 @@ async function main() {
   const fixedSellOrders = await seaport.createFactorySellOrders({
     assets: [
       {
-        tokenId: 1,
+        tokenId: FIXED_PRICE_OPTION_ID,
         tokenAddress: FACTORY_CONTRACT_ADDRESS,
       }
     ],
     accountAddress: OWNER_ADDRESS,
-    startAmount: FIXED_PRICE,
-    numberOfOrders: NUM_FIXED_PRICE_AUCTIONS,
+    startAmount: FIXED_PRICE
   });
   console.log(
     `Successfully made ${fixedSellOrders.length} fixed-price sell orders! ${fixedSellOrders[0].asset.openseaLink}\n`
