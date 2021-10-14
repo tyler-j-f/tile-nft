@@ -6,7 +6,6 @@ import "openzeppelin-solidity/contracts/access/Ownable.sol";
 import "openzeppelin-solidity/contracts/utils/Strings.sol";
 import "./IFactoryERC721.sol";
 import "./Creature.sol";
-import "./CreatureLootBox.sol";
 
 contract CreatureFactory is FactoryERC721, Ownable {
     using Strings for string;
