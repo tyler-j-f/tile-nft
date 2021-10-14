@@ -20,7 +20,7 @@ const DUTCH_AUCTION_END_AMOUNT = 50;
 const NUM_DUTCH_AUCTIONS = 3;
 
 const FIXED_PRICE_OPTION_ID = "2";
-const NUM_FIXED_PRICE_AUCTIONS = 1;
+const NUM_FIXED_PRICE_AUCTIONS = 3;
 const FIXED_PRICE = 0.05;
 
 if (!MNEMONIC || !NODE_API_KEY || !NETWORK || !OWNER_ADDRESS) {
@@ -77,10 +77,11 @@ async function main() {
       }
     ],
     accountAddress: OWNER_ADDRESS,
-    startAmount: FIXED_PRICE
+    startAmount: FIXED_PRICE,
+    numberOfOrders: NUM_FIXED_PRICE_AUCTIONS
   });
   console.log(
-    `Successfully made ${fixedSellOrders.length} fixed-price sell orders! ${fixedSellOrders[0].asset.openseaLink}\n`
+    `Successfully made ${fixedSellOrders} fixed-price sell orders!}\n`
   );
 }
 
