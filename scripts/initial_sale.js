@@ -20,7 +20,7 @@ const DUTCH_AUCTION_END_AMOUNT = 50;
 const NUM_DUTCH_AUCTIONS = 3;
 
 const FIXED_PRICE_OPTION_ID = "2";
-const NUM_FIXED_PRICE_AUCTIONS = 10;
+const NUM_FIXED_PRICE_AUCTIONS = 1;
 const FIXED_PRICE = 0.05;
 
 if (!MNEMONIC || !NODE_API_KEY || !NETWORK || !OWNER_ADDRESS) {
@@ -72,9 +72,9 @@ async function main() {
   const fixedSellOrders = await seaport.createFactorySellOrders({
     assets: [
       {
-        tokenId: FIXED_PRICE_OPTION_ID,
+        tokenId: 1,
         tokenAddress: FACTORY_CONTRACT_ADDRESS,
-      },
+      }
     ],
     accountAddress: OWNER_ADDRESS,
     startAmount: FIXED_PRICE,
@@ -82,46 +82,6 @@ async function main() {
   });
   console.log(
     `Successfully made ${fixedSellOrders.length} fixed-price sell orders! ${fixedSellOrders[0].asset.openseaLink}\n`
-  );
-
-  // Example: many fixed price auctions for multiple factory options.
-  console.log("Creating fixed price auctions...");
-  const fixedSellOrdersTwo = await seaport.createFactorySellOrders({
-    assets: [
-      { tokenId: "3", tokenAddress: FACTORY_CONTRACT_ADDRESS },
-      { tokenId: "4", tokenAddress: FACTORY_CONTRACT_ADDRESS },
-      { tokenId: "5", tokenAddress: FACTORY_CONTRACT_ADDRESS },
-      { tokenId: "6", tokenAddress: FACTORY_CONTRACT_ADDRESS },
-    ],
-    factoryAddress: FACTORY_CONTRACT_ADDRESS,
-    accountAddress: OWNER_ADDRESS,
-    startAmount: FIXED_PRICE,
-    numberOfOrders: NUM_FIXED_PRICE_AUCTIONS,
-  });
-  console.log(
-    `Successfully made ${fixedSellOrdersTwo.length} fixed-price sell orders for multiple assets at once! ${fixedSellOrders[0].asset.openseaLink}\n`
-  );
-
-  // Example: many declining Dutch auction for a factory.
-  console.log("Creating dutch auctions...");
-
-  // Expire one day from now
-  const expirationTime = Math.round(Date.now() / 1000 + 60 * 60 * 24);
-  const dutchSellOrders = await seaport.createFactorySellOrders({
-    assets: [
-      {
-        tokenId: DUTCH_AUCTION_OPTION_ID,
-        tokenAddress: FACTORY_CONTRACT_ADDRESS,
-      },
-    ],
-    accountAddress: OWNER_ADDRESS,
-    startAmount: DUTCH_AUCTION_START_AMOUNT,
-    endAmount: DUTCH_AUCTION_END_AMOUNT,
-    expirationTime: expirationTime,
-    numberOfOrders: NUM_DUTCH_AUCTIONS,
-  });
-  console.log(
-    `Successfully made ${dutchSellOrders.length} Dutch-auction sell orders! ${dutchSellOrders[0].asset.openseaLink}\n`
   );
 }
 
