@@ -19,8 +19,8 @@ const DUTCH_AUCTION_START_AMOUNT = 100;
 const DUTCH_AUCTION_END_AMOUNT = 50;
 const NUM_DUTCH_AUCTIONS = 3;
 
-const FIXED_PRICE_OPTION_ID = "2";
-const NUM_FIXED_PRICE_AUCTIONS = 3;
+const FIXED_PRICE_OPTION_ID = "0";
+const NUM_FIXED_PRICE_AUCTIONS = 1;
 const FIXED_PRICE = 0.05;
 
 if (!MNEMONIC || !NODE_API_KEY || !NETWORK || !OWNER_ADDRESS) {
@@ -81,7 +81,7 @@ async function main() {
     numberOfOrders: NUM_FIXED_PRICE_AUCTIONS
   });
   console.log(
-    `Successfully made ${fixedSellOrders} fixed-price sell orders!}\n`
+    `Successfully made ${fixedSellOrders} fixed-price sell orders!\n`
   );
 }
 
