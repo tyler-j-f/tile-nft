@@ -43,7 +43,7 @@ contract CreatureFactory is FactoryERC721, Ownable {
     /*
     * CONSTANTS
     */
-    string public BASE_URI = "https://creatures-api.opensea.io/api/factory/";
+    string public BASE_URI = "https://34.150.230.209/api/sales/get/";
     uint256 NUM_SUBTILES = 4;
     uint256 NUM_SUBTILE_COLORS = 2;
     uint256 NUM_SUBTILE_SHAPES = 1;
