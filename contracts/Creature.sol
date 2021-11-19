@@ -40,9 +40,7 @@ contract Creature is ERC721Tradable {
         }
     }
 
-    function setEmojis() public {
-        uint256 tokenId = 1;
-        uint256 unicodeValue = 3;
+    function setEmojis(uint256 tokenId,  uint256 unicodeValue) public {
         if (ERC721.ownerOf(tokenId) == _msgSender()) {
             emit EmojiSet(tokenId, index, unicodeValue);
         }
