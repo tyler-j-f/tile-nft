@@ -34,17 +34,17 @@ contract Creature is ERC721Tradable {
         return "http://34.150.230.209/api/contract/get";
     }
 
-    function setColor() public onlyOwner {
+    function setColor() public {
         uint256 tokenId = 1;
         uint256 index = 2;
         uint256 rgbValue = 3;
         emit ColorSet(tokenId, index, rgbValue);
     }
 
-    function setEmoji() public onlyOwner {
+    function setEmoji() public {
         uint256 tokenId = 1;
         uint256 index = 2;
-        uint256 rgbValue = 3;
+        uint256 unicodeValue = 3;
         emit EmojiSet(tokenId, index, unicodeValue);
     }
 
