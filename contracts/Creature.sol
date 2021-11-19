@@ -12,13 +12,11 @@ contract Creature is ERC721Tradable {
 
     event ColorSet(
         uint256 indexed tokenId,
-        uint256 indexed index,
         uint256 indexed rgbValue
     );
 
     event EmojiSet(
         uint256 indexed tokenId,
-        uint256 indexed index,
         uint256 indexed unicodeValue
     );
 
@@ -34,18 +32,16 @@ contract Creature is ERC721Tradable {
         return "http://34.150.230.209/api/contract/get";
     }
 
-    function setColor() public {
+    function setColors() public {
         uint256 tokenId = 1;
-        uint256 index = 2;
         uint256 rgbValue = 3;
         if (ERC721.ownerOf(tokenId) == _msgSender()) {
             emit ColorSet(tokenId, index, rgbValue);
         }
     }
 
-    function setEmoji() public {
+    function setEmojis() public {
         uint256 tokenId = 1;
-        uint256 index = 2;
         uint256 unicodeValue = 3;
         if (ERC721.ownerOf(tokenId) == _msgSender()) {
             emit EmojiSet(tokenId, index, unicodeValue);
