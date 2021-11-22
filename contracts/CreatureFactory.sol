@@ -163,4 +163,23 @@ contract CreatureFactory is FactoryERC721, Ownable {
     function getSaleOptionMaxSupply() private view returns (uint256) {
         return NUM_TILES_PER_SALE_OPTION;
     }
+
+    function merge(uint256 tokenId1,  uint256 tokenId2) public {
+        uint256 _optionId = 0;
+        address sender = _msgSender();
+        Creature openSeaCreature = Creature(nftAddress);
+        openSeaCreature.mintTo(sender);
+        require(openSeaCreature.ownerOf(tokenId1) == sender && openSeaCreature.ownerOf(tokenId2) == sender);
+        require(canMint(_optionId));
+        // burn tokens
+        openSeaCreature.safeTransferFrom(sender, address(0), tokenId1);
+        openSeaCreature.safeTransferFrom(sender, address(0), tokenId2);
+        // mint a new token
+        // v Can probably be removed.
+        uint256 numMintedTokensPerSale = _mintedTokens[_optionId];
+        numMintedTokensPerSale++;
+        _mintedTokens[_optionId] = numMintedTokensPerSale;
+        // ^ Can probably be removed.
+        emit Mint(_mintedTokens[_optionId], _optionId, openSeaCreature.totalSupply());
+    }
 }

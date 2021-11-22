@@ -44,14 +44,4 @@ contract Creature is ERC721Tradable {
         }
     }
 
-    function merge(uint256 tokenId1,  uint256 tokenId2) public {
-        address sender = _msgSender();
-        if (ERC721.ownerOf(tokenId1) == sender && ERC721.ownerOf(tokenId2) == sender) {
-            emit Transfer(sender, address(0), tokenId1);
-            emit Transfer(sender, address(0), tokenId2);
-            uint256 newTokenId = ERC721Enumerable.totalSupply() + 1;
-            emit Transfer(address(0), sender, newTokenId);
-        }
-    }
-
 }
