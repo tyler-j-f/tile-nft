@@ -50,14 +50,8 @@ contract Creature is ERC721Tradable {
             address burnTokenAddress = 0x0123456789012345678901234567890123456789;
             ERC721.transferFrom(sender, burnTokenAddress, tokenId1);
             ERC721.transferFrom(sender, burnTokenAddress, tokenId2);
-            mergeMintTo(sender);
+            ERC721Tradable.mintTo(sender);
         }
-    }
-
-    function mergeMintTo(address _to) private {
-        uint256 newTokenId = _getNextTokenId();
-        _mint(_to, newTokenId);
-        _incrementTokenId();
     }
 
 }
