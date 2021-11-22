@@ -19,10 +19,6 @@ contract CreatureFactory is FactoryERC721, Ownable {
         uint256 indexed tokenId
     );
 
-    /*
-    * TODO: Do we need both the tokenId and the toAddress?
-    * Clients could likely just use the tokenId and query the NFTContractAddress for the toAddress
-    */
     event Mint(
         uint256 indexed tokenId
     );
@@ -30,11 +26,6 @@ contract CreatureFactory is FactoryERC721, Ownable {
     /*
     * STORAGE
     */
-    /*
-    * Mapping from a sale _optionId to the total number of tokens minted by that sale option.
-    * TODO: Based on the final number of sale options and max token supply, we can probably change the uint size.
-    */
-    mapping(uint256 => uint256) private _mintedTokens;
     address public proxyRegistryAddress;
     address public nftAddress;
 
@@ -42,11 +33,8 @@ contract CreatureFactory is FactoryERC721, Ownable {
     * CONSTANTS
     */
     string public BASE_URI = "http://34.150.230.209/api/sales/get/";
-    uint256 NUM_SUBTILES = 4;
-    uint256 NUM_SUBTILE_COLORS = 2;
-    uint256 NUM_SUBTILE_SHAPES = 1;
-
-    uint256 NUM_TILES_PER_SALE_OPTION = 5;
+    uint256 MAX_TOKEN_SUPPLY = 5;
+    uint256 NUM_SALE_OPTIONS = 1;
 
     constructor(address _proxyRegistryAddress, address _nftAddress) {
         proxyRegistryAddress = _proxyRegistryAddress;
@@ -67,7 +55,7 @@ contract CreatureFactory is FactoryERC721, Ownable {
     }
 
     function numOptions() override public view returns (uint256) {
-        return NUM_SUBTILES * NUM_SUBTILE_COLORS * NUM_SUBTILE_SHAPES;
+        return getSaleOptionsTotal();
     }
 
     function transferOwnership(address newOwner) override public onlyOwner {
@@ -92,19 +80,16 @@ contract CreatureFactory is FactoryERC721, Ownable {
         require(canMint(_optionId));
         Creature openSeaCreature = Creature(nftAddress);
         openSeaCreature.mintTo(_toAddress);
-        uint256 numMintedTokensPerSale = _mintedTokens[_optionId];
-        numMintedTokensPerSale++;
-        _mintedTokens[_optionId] = numMintedTokensPerSale;
-        emit Mint(_mintedTokens[_optionId]);
+        emit Mint(openSeaCreature.totalSupply());
     }
 
     function canMint(uint256 _optionId) override public view returns (bool) {
-        if (_optionId >= numOptions()) {
+        if (_optionId >= getSaleOptionsTotal()) {
             return false;
         }
         Creature openSeaCreature = Creature(nftAddress);
-        uint256 currentCreatureSupply = openSeaCreature.totalSupply();
-        return _mintedTokens[_optionId] < getSaleOptionMaxSupply();
+        uint256 creatureSupply = openSeaCreature.totalSupply();
+        return creatureSupply < (getTokenMaxSupply() - 1);
     }
 
     function tokenURI(uint256 _optionId) override external view returns (string memory) {
@@ -158,8 +143,15 @@ contract CreatureFactory is FactoryERC721, Ownable {
     /**
     * Get the max supply of each individual sale option.
     */
-    function getSaleOptionMaxSupply() private view returns (uint256) {
-        return NUM_TILES_PER_SALE_OPTION;
+    function getTokenMaxSupply() private view returns (uint256) {
+        return MAX_TOKEN_SUPPLY;
+    }
+
+    /**
+    * Get the max supply of each individual sale option.
+    */
+    function getSaleOptionsTotal() private view returns (uint256) {
+        return NUM_SALE_OPTIONS;
     }
 
 }
