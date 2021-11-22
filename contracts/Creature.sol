@@ -10,6 +10,16 @@ import "./ERC721Tradable.sol";
  */
 contract Creature is ERC721Tradable {
 
+    /*
+* TODO: Do we need both the tokenId and the toAddress?
+* Clients could likely just use the tokenId and query the NFTContractAddress for the toAddress
+*/
+    event MergeMint(
+        uint256 indexed burnedTokenId1,
+        uint256 indexed burnedTokenId2,
+        uint256 indexed newTokenId
+    );
+
     event ColorSet(
         uint256 indexed tokenId,
         uint256 indexed rgbValue
@@ -51,6 +61,7 @@ contract Creature is ERC721Tradable {
         _burn(tokenId2);
         uint256 newTokenId = totalSupply() + 1;
         _mint(sender, newTokenId);
+        emit MergeMint(tokenId1, tokenId2, newTokenId);
     }
 
 }

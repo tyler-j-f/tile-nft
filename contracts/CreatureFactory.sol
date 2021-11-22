@@ -24,8 +24,6 @@ contract CreatureFactory is FactoryERC721, Ownable {
     * Clients could likely just use the tokenId and query the NFTContractAddress for the toAddress
     */
     event Mint(
-        uint256 indexed saleOptionSupplyPostMint,
-        uint256 indexed saleOptionId,
         uint256 indexed tokenId
     );
 
@@ -97,7 +95,7 @@ contract CreatureFactory is FactoryERC721, Ownable {
         uint256 numMintedTokensPerSale = _mintedTokens[_optionId];
         numMintedTokensPerSale++;
         _mintedTokens[_optionId] = numMintedTokensPerSale;
-        emit Mint(_mintedTokens[_optionId], _optionId, openSeaCreature.totalSupply());
+        emit Mint(_mintedTokens[_optionId]);
     }
 
     function canMint(uint256 _optionId) override public view returns (bool) {
