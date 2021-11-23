@@ -10,6 +10,9 @@ import "./Creature.sol";
 contract CreatureFactory is FactoryERC721, Ownable {
     using Strings for string;
 
+    // 0x255000255000255000255000255
+    // 0x255255255255255255255255255
+
     /*
     * EVENTS
     */
