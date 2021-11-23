@@ -10,10 +10,6 @@ import "./ERC721Tradable.sol";
  */
 contract Creature is ERC721Tradable {
 
-    /*
-* TODO: Do we need both the tokenId and the toAddress?
-* Clients could likely just use the tokenId and query the NFTContractAddress for the toAddress
-*/
     event MergeMint(
         uint256 indexed burnedTokenId1,
         uint256 indexed burnedTokenId2,
@@ -31,7 +27,7 @@ contract Creature is ERC721Tradable {
     );
 
     constructor(address _proxyRegistryAddress)
-        ERC721Tradable("Creature", "OSC", _proxyRegistryAddress)
+        ERC721Tradable("Tile", "TILE", _proxyRegistryAddress)
     {}
 
     function baseTokenURI() override public pure returns (string memory) {

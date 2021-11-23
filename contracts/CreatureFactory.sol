@@ -43,11 +43,11 @@ contract CreatureFactory is FactoryERC721, Ownable {
     }
 
     function name() override external pure returns (string memory) {
-        return "OpenSeaCreature Item Sale";
+        return "TILE NFT Item Sale";
     }
 
     function symbol() override external pure returns (string memory) {
-        return "CPF";
+        return "SALE-TILE";
     }
 
     function supportsFactoryInterface() override public pure returns (bool) {
