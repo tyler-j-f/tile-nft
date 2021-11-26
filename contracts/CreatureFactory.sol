@@ -12,6 +12,9 @@ contract CreatureFactory is FactoryERC721, Ownable {
 
     // 0x255000255000255000255000255
     // 0x255255255255255255255255255
+    // 0xA110000A110000A110000A1100000001
+    // 0xtile1  tile2  tile3  tile4  EmojiIndex (last 4 hex digits)
+    // tile# => 7 hex digits
 
     /*
     * EVENTS
