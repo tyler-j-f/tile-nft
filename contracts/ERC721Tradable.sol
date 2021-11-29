@@ -64,7 +64,7 @@ abstract contract ERC721Tradable is ContextMixin, ERC721Enumerable, NativeMetaTr
 
     function _incrementTokenIdForMerge(uint256 tokenId1,  uint256 tokenId2) internal {
         address sender = _msgSender();
-        require(ERC721.ownerOf(tokenId1) == sender && ERC721.ownerOf(tokenId2) == sender);
+        require(tokenId1 != tokenId2 && ERC721.ownerOf(tokenId1) == sender && ERC721.ownerOf(tokenId2) == sender);
         _currentTokenId++;
     }
 

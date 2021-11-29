@@ -52,7 +52,7 @@ contract Creature is ERC721Tradable {
 
     function merge(uint256 tokenId1,  uint256 tokenId2) public {
         address sender = _msgSender();
-        require(ERC721.ownerOf(tokenId1) == sender && ERC721.ownerOf(tokenId2) == sender);
+        require(tokenId1 != tokenId2 && ERC721.ownerOf(tokenId1) == sender && ERC721.ownerOf(tokenId2) == sender);
         uint256 newTokenId = _getNextTokenId();
         _incrementTokenIdForMerge(tokenId1, tokenId2);
         _burn(tokenId1);
