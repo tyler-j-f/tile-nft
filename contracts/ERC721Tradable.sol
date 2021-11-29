@@ -50,7 +50,7 @@ abstract contract ERC721Tradable is ContextMixin, ERC721Enumerable, NativeMetaTr
      * @dev calculates the next token ID based on value of _currentTokenId
      * @return uint256 for the next token ID
      */
-    function _getNextTokenId() private view returns (uint256) {
+    function _getNextTokenId() internal view returns (uint256) {
         return _currentTokenId.add(1);
     }
 
@@ -58,6 +58,13 @@ abstract contract ERC721Tradable is ContextMixin, ERC721Enumerable, NativeMetaTr
      * @dev increments the value of _currentTokenId
      */
     function _incrementTokenId() private {
+        _currentTokenId++;
+    }
+
+
+    function _incrementTokenIdForMerge(uint256 tokenId1,  uint256 tokenId2) internal {
+        address sender = _msgSender();
+        require(ERC721.ownerOf(tokenId1) == sender && ERC721.ownerOf(tokenId2) == sender);
         _currentTokenId++;
     }
 

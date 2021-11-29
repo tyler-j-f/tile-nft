@@ -10,6 +10,12 @@ import "./ERC721Tradable.sol";
  */
 contract Creature is ERC721Tradable {
 
+    event MergeMint(
+        uint256 indexed burnedTokenId1,
+        uint256 indexed burnedTokenId2,
+        uint256 indexed newTokenId
+    );
+
     event ColorSet(
         uint256 indexed tokenId,
         bytes32 indexed rgbValue
@@ -33,19 +39,26 @@ contract Creature is ERC721Tradable {
     }
 
     function setColors(uint256 tokenId,  bytes32 rgbValue) public {
-        require(ERC721.ownerOf(tokenId) == _msgSender());
-        emit ColorSet(tokenId, rgbValue);
+        if (ERC721.ownerOf(tokenId) == _msgSender()) {
+            emit ColorSet(tokenId, rgbValue);
+        }
     }
 
     function setEmojis(uint256 tokenId,  bytes32 unicodeValue) public {
-        require(ERC721.ownerOf(tokenId) == _msgSender());
-        emit EmojiSet(tokenId, unicodeValue);
+        if (ERC721.ownerOf(tokenId) == _msgSender()) {
+            emit EmojiSet(tokenId, unicodeValue);
+        }
     }
 
-
-    function burn(uint256 tokenId) public {
-        require(ERC721.ownerOf(tokenId) == _msgSender());
-        _burn(tokenId);
+    function merge(uint256 tokenId1,  uint256 tokenId2) public {
+        address sender = _msgSender();
+        require(ERC721.ownerOf(tokenId1) == sender && ERC721.ownerOf(tokenId2) == sender);
+        uint256 newTokenId = _getNextTokenId();
+        _incrementTokenIdForMerge(tokenId1, tokenId2);
+        _burn(tokenId1);
+        _burn(tokenId2);
+        _mint(sender, newTokenId);
+        emit MergeMint(tokenId1, tokenId2, newTokenId);
     }
 
 }
