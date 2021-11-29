@@ -57,6 +57,7 @@ contract Creature is ERC721Tradable {
         _burn(tokenId1);
         _burn(tokenId2);
         _mint(sender, newTokenId);
+        _incrementTokenId();
         emit MergeMint(tokenId1, tokenId2, newTokenId);
     }
 
