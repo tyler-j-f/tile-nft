@@ -54,10 +54,9 @@ contract Creature is ERC721Tradable {
         address sender = _msgSender();
         require(ERC721.ownerOf(tokenId1) == sender && ERC721.ownerOf(tokenId2) == sender);
         uint256 newTokenId = totalSupply() + 1;
+        mintTo(sender);
         _burn(tokenId1);
         _burn(tokenId2);
-        _mint(sender, newTokenId);
-        _incrementTokenId();
         emit MergeMint(tokenId1, tokenId2, newTokenId);
     }
 
