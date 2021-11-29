@@ -50,7 +50,7 @@ abstract contract ERC721Tradable is ContextMixin, ERC721Enumerable, NativeMetaTr
      * @dev calculates the next token ID based on value of _currentTokenId
      * @return uint256 for the next token ID
      */
-    function _getNextTokenId() internal view returns (uint256) {
+    function _getNextTokenId() public view returns (uint256) {
         return _currentTokenId.add(1);
     }
 
