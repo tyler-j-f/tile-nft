@@ -25,10 +25,6 @@ contract CreatureFactory is FactoryERC721, Ownable {
         uint256 indexed tokenId
     );
 
-    event Mint(
-        uint256 indexed tokenId
-    );
-
     /*
     * STORAGE
     */
@@ -86,7 +82,6 @@ contract CreatureFactory is FactoryERC721, Ownable {
         require(canMint(_optionId));
         Creature openSeaCreature = Creature(nftAddress);
         openSeaCreature.mintTo(_toAddress);
-        emit Mint(openSeaCreature.totalSupply());
     }
 
     function canMint(uint256 _optionId) override public view returns (bool) {
