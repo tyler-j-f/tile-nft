@@ -29,6 +29,12 @@ contract CreatureFactory is FactoryERC721, Ownable {
         uint256 indexed tokenId
     );
 
+    event MergeMint(
+        uint256 indexed burnedTokenId1,
+        uint256 indexed burnedTokenId2,
+        uint256 indexed newTokenId
+    );
+
     /*
     * STORAGE
     */
@@ -136,6 +142,17 @@ contract CreatureFactory is FactoryERC721, Ownable {
         }
 
         return false;
+    }
+
+    function merge(uint256 tokenId1,  uint256 tokenId2) public {
+        address sender = _msgSender();
+        Creature openSeaCreature = Creature(nftAddress);
+        uint256 newTokenId = openSeaCreature.totalSupply() + 1;
+        require(openSeaCreature.ownerOf(tokenId1) == sender && openSeaCreature.ownerOf(tokenId2) == sender);
+        openSeaCreature.mintTo(sender);
+        openSeaCreature.burn(tokenId1);
+        openSeaCreature.burn(tokenId2);
+        emit MergeMint(tokenId1, tokenId2, newTokenId);
     }
 
     /**
