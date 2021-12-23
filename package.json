@@ -1,7 +1,7 @@
 {
-  "name": "opensea-creatures",
+  "name": "tile-nft",
   "version": "1.0.0",
-  "description": "OpenSea's smart contracts, including ERC721 templates, factories, and the storefront builder.",
+  "description": "TileNFT project. TileNFT contract and a TileNFT factory contract. View tileNFT.io for more info.",
   "main": "index.js",
   "scripts": {
     "ganache-cli": "ganache-cli -d -p 7545 --gasLimit=10000000",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ProjectOpenSea/opensea-creatures.git"
+    "url": "git+https://github.com/tyler-j-f/tile-nft"
   },
   "author": "support@opensea.io",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ProjectOpenSea/opensea-creatures/issues"
+    "url": "https://github.com/tyler-j-f/tile-nft/issues"
   },
-  "homepage": "https://github.com/ProjectOpenSea/opensea-creatures#readme",
+  "homepage": "http://34.150.230.209",
   "dependencies": {
     "@0x/subproviders": "^6.4.1",
     "eth-gas-reporter": "^0.2.17",

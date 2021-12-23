@@ -1,4 +1,4 @@
-## OpenSea Creatures - Starter ERC721, ERC1155, and factory contracts
+## Tile NFTs
 
 What's included:
 
@@ -45,7 +45,7 @@ sudo npm explore npm -g -- npm install node-gyp@latest # Update node-gyp
 ```
 export ALCHEMY_KEY="<your_alchemy_project_id>"
 export MNEMONIC="<metmask_mnemonic>"
-DEPLOY_CREATURES_SALE=1 yarn truffle deploy --network rinkeby
+DEPLOY_TILES_FACTORY_CONTRACT=1 yarn truffle deploy --network rinkeby
 ```
 
 ### Minting tokens.

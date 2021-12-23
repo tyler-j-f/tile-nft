@@ -5,16 +5,10 @@ pragma solidity ^0.8.0;
 import "openzeppelin-solidity/contracts/access/Ownable.sol";
 import "openzeppelin-solidity/contracts/utils/Strings.sol";
 import "./IFactoryERC721.sol";
-import "./Creature.sol";
+import "./Tile.sol";
 
-contract CreatureFactory is FactoryERC721, Ownable {
+contract TileFactory is FactoryERC721, Ownable {
     using Strings for string;
-
-    // 0x255000255000255000255000255
-    // 0x255255255255255255255255255
-    // 0xA110000A110000A110000A1100000001
-    // 0xtile1  tile2  tile3  tile4  EmojiIndex (last 4 hex digits)
-    // tile# => 7 hex digits
 
     /*
     * EVENTS
@@ -84,9 +78,9 @@ contract CreatureFactory is FactoryERC721, Ownable {
                 owner() == _msgSender()
         );
         require(canMint(_optionId));
-        Creature openSeaCreature = Creature(nftAddress);
-        uint256 nextTokenId = openSeaCreature._getNextTokenId();
-        openSeaCreature.mintTo(_toAddress);
+        Tile tileContract = Tile(nftAddress);
+        uint256 nextTokenId = tileContract._getNextTokenId();
+        tileContract.mintTo(_toAddress);
         emit Mint(nextTokenId);
     }
 
@@ -94,9 +88,8 @@ contract CreatureFactory is FactoryERC721, Ownable {
         if (_optionId >= getSaleOptionsTotal()) {
             return false;
         }
-        Creature openSeaCreature = Creature(nftAddress);
-        uint256 creatureSupply = openSeaCreature.totalSupply();
-        return creatureSupply <= (getTokenMaxSupply() - 1);
+        Tile tileContract = Tile(nftAddress);
+        return tileContract.totalSupply() <= (getTokenMaxSupply() - 1);
     }
 
     function tokenURI(uint256 _optionId) override external view returns (string memory) {

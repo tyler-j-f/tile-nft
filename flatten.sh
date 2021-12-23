@@ -1,2 +1,2 @@
-./node_modules/.bin/truffle-flattener contracts/Creature.sol > flattened/Creature.sol
-./node_modules/.bin/truffle-flattener contracts/CreatureFactory.sol > flattened/CreatureFactory.sol
+./node_modules/.bin/truffle-flattener contracts/Tile.sol > flattened/Tile.sol
+./node_modules/.bin/truffle-flattener contracts/TileFactory.sol > flattened/TileFactory.sol
