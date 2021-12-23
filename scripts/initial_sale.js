@@ -14,11 +14,6 @@ const OWNER_ADDRESS = process.env.OWNER_ADDRESS;
 const NETWORK = process.env.NETWORK;
 const API_KEY = process.env.API_KEY || ""; // API key is optional but useful if you're doing a high volume of requests.
 
-const DUTCH_AUCTION_OPTION_ID = "1";
-const DUTCH_AUCTION_START_AMOUNT = 100;
-const DUTCH_AUCTION_END_AMOUNT = 50;
-const NUM_DUTCH_AUCTIONS = 3;
-
 const FIXED_PRICE_OPTION_ID = "0";
 const NUM_FIXED_PRICE_AUCTIONS = 1;
 const FIXED_PRICE = 0.05;

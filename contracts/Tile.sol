@@ -18,6 +18,7 @@ contract Tile is ERC721Tradable {
 
     event MetadataSet(
         uint256 indexed tokenId,
+        uint8 indexed dataToSetIndex,
         bytes32 indexed rgbValue
     );
 
@@ -33,9 +34,9 @@ contract Tile is ERC721Tradable {
         return "http://34.150.230.209/api/contract/get";
     }
 
-    function metadataSet(uint256 tokenId,  uint256 dataToSetIndex, bytes32 rgbValue) public {
+    function metadataSet(uint256 tokenId,  uint8 dataToSetIndex, bytes32 rgbValue) public {
         if (ERC721.ownerOf(tokenId) == _msgSender()) {
-            emit MetadataSet(tokenId, rgbValue);
+            emit MetadataSet(tokenId, dataToSetIndex, rgbValue);
         }
     }
 
