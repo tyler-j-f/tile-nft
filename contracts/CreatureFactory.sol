@@ -83,9 +83,9 @@ contract CreatureFactory is FactoryERC721, Ownable {
             address(proxyRegistry.proxies(owner())) == _msgSender() ||
                 owner() == _msgSender()
         );
+        require(canMint(_optionId));
         Creature openSeaCreature = Creature(nftAddress);
         uint256 nextTokenId = openSeaCreature._getNextTokenId();
-        require(canMint(_optionId));
         openSeaCreature.mintTo(_toAddress);
         emit Mint(nextTokenId);
     }
@@ -96,7 +96,7 @@ contract CreatureFactory is FactoryERC721, Ownable {
         }
         Creature openSeaCreature = Creature(nftAddress);
         uint256 creatureSupply = openSeaCreature.totalSupply();
-        return creatureSupply < (getTokenMaxSupply() - 1);
+        return creatureSupply <= (getTokenMaxSupply() - 1);
     }
 
     function tokenURI(uint256 _optionId) override external view returns (string memory) {
