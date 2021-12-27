@@ -33,7 +33,7 @@ contract TileFactory is FactoryERC721, Ownable {
     * CONSTANTS
     */
     string public BASE_URI = "http://34.150.230.209/api/sales/get/";
-    uint256 MAX_TOKEN_SUPPLY = 5;
+    uint256 MAX_TOKEN_SUPPLY = 10;
     uint256 NUM_SALE_OPTIONS = 1;
 
     constructor(address _proxyRegistryAddress, address _nftAddress) {
@@ -43,11 +43,11 @@ contract TileFactory is FactoryERC721, Ownable {
     }
 
     function name() override external pure returns (string memory) {
-        return "TILE NFT Item Sale";
+        return "TileNft Item Sale";
     }
 
     function symbol() override external pure returns (string memory) {
-        return "SALE-TILE";
+        return "TileNftSale";
     }
 
     function supportsFactoryInterface() override public pure returns (bool) {
