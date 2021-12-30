@@ -34,7 +34,7 @@ contract Tile is ERC721Tradable {
         return "http://34.150.230.209/api/contract/get";
     }
 
-    function metadataSet(uint256 tokenId,  uint8 dataToSetIndex, bytes32 rgbValue) public {
+    function metadataSet(uint256 tokenId, uint8 dataToSetIndex, bytes32 rgbValue) public {
         if (ERC721.ownerOf(tokenId) == _msgSender()) {
             emit MetadataSet(tokenId, dataToSetIndex, rgbValue);
         }
