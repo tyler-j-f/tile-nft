@@ -32,7 +32,7 @@ contract TileFactory is FactoryERC721, Ownable {
     /*
     * CONSTANTS
     */
-    string public BASE_URI = "http://34.150.230.209/api/sales/get/";
+    string public BASE_URI = "http://34.86.114.102/api/sales/get/";
     uint256 MAX_TOKEN_SUPPLY = 100;
     uint256 NUM_SALE_OPTIONS = 1;
 
