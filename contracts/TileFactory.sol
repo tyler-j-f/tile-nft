@@ -32,8 +32,7 @@ contract TileFactory is FactoryERC721, Ownable {
     /*
     * CONSTANTS
     */
-    string public BASE_URI = "http://34.86.114.102/api/sales/get/";
-    uint256 MAX_TOKEN_SUPPLY = 100;
+    uint256 MAX_TOKEN_SUPPLY = 10000;
     uint256 NUM_SALE_OPTIONS = 1;
 
     constructor(address _proxyRegistryAddress, address _nftAddress) {
@@ -93,7 +92,8 @@ contract TileFactory is FactoryERC721, Ownable {
     }
 
     function tokenURI(uint256 _optionId) override external view returns (string memory) {
-        return string(abi.encodePacked(BASE_URI, Strings.toString(_optionId)));
+        Tile tileContract = Tile(nftAddress);
+        return string(abi.encodePacked(tileContract.baseMetadataURI(), "/api/sales/get/", Strings.toString(_optionId)));
     }
 
     /**

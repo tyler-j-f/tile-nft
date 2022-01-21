@@ -10,6 +10,8 @@ import "./ERC721Tradable.sol";
  */
 contract Tile is ERC721Tradable {
 
+    string public constant BASE_METADATA_API_URL = "http://34.86.114.102";
+
     event MergeMint(
         uint256 indexed burnedTokenId1,
         uint256 indexed burnedTokenId2,
@@ -26,12 +28,16 @@ contract Tile is ERC721Tradable {
         ERC721Tradable("Tile Nft", "TileNft", _proxyRegistryAddress)
     {}
 
+    function baseMetadataURI() public pure returns (string memory) {
+        return Tile.BASE_METADATA_API_URL;
+    }
+
     function baseTokenURI() override public pure returns (string memory) {
-        return "http://34.86.114.102/view/?tokenId=";
+        return string(abi.encodePacked(Tile.BASE_METADATA_API_URL, "/api/view/tokenId="));
     }
 
     function contractURI() public pure returns (string memory) {
-        return "http://34.86.114.102/api/contract/get";
+        return string(abi.encodePacked(Tile.BASE_METADATA_API_URL, "/api/contract/get"));
     }
 
     function metadataSet(uint256 tokenId, uint8 dataToSetIndex, bytes32 dataToSet) public {
