@@ -27,7 +27,7 @@ contract Tile is ERC721Tradable {
     {}
 
     function baseTokenURI() override public pure returns (string memory) {
-        return "http://34.86.114.102/api/tiles/get/";
+        return "http://34.86.114.102/view/?tokenId=";
     }
 
     function contractURI() public pure returns (string memory) {
