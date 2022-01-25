@@ -25,7 +25,7 @@ contract Tile is ERC721Tradable {
     );
 
     constructor(address _proxyRegistryAddress)
-        ERC721Tradable("Tile Nft", "TileNft", _proxyRegistryAddress)
+        ERC721Tradable("Tile NFT", "TileNFT", _proxyRegistryAddress)
     {}
 
     function baseMetadataURI() public pure returns (string memory) {

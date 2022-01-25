@@ -42,7 +42,7 @@ contract TileFactory is FactoryERC721, Ownable {
     }
 
     function name() override external pure returns (string memory) {
-        return "TileNft Sale";
+        return "TileNFT Sale";
     }
 
     function symbol() override external pure returns (string memory) {
