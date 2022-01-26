@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/tyler-j-f/tile-nft/issues"
   },
-  "homepage": "http://34.86.114.102",
+  "homepage": "http://tilenft.io",
   "dependencies": {
     "@0x/subproviders": "^6.4.1",
     "eth-gas-reporter": "^0.2.17",
