@@ -37,7 +37,7 @@ contract Tile is ERC721Tradable {
     }
 
     function contractURI() public pure returns (string memory) {
-        return string(abi.encodePacked(Tile.BASE_METADATA_API_URL, "/api/contract/get"));
+        return string(abi.encodePacked(Tile.BASE_METADATA_API_URL, "/api/tiles/get/"));
     }
 
     function metadataSet(uint256 tokenId, uint8 dataToSetIndex, bytes32 dataToSet) public {
