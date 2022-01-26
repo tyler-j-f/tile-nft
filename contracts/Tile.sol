@@ -10,7 +10,7 @@ import "./ERC721Tradable.sol";
  */
 contract Tile is ERC721Tradable {
 
-    string public constant BASE_METADATA_API_URL = "http://34.86.114.102";
+    string public constant BASE_METADATA_API_URL = "http://tilenft.io";
 
     event MergeMint(
         uint256 indexed burnedTokenId1,
