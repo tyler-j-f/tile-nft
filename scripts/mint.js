@@ -7,7 +7,7 @@ const FACTORY_CONTRACT_ADDRESS = process.env.FACTORY_CONTRACT_ADDRESS;
 const NFT_CONTRACT_ADDRESS = process.env.NFT_CONTRACT_ADDRESS;
 const OWNER_ADDRESS = process.env.OWNER_ADDRESS;
 const NETWORK = process.env.NETWORK;
-const NUM_TILES = 120;
+const NUM_TILES_TO_MINT = 120;
 const DEFAULT_OPTION_ID = 0;
 
 if (!MNEMONIC || !NODE_API_KEY || !OWNER_ADDRESS || !NETWORK) {
@@ -74,7 +74,7 @@ async function main() {
     );
 
     // TileNFTs issued directly to the owner.
-    for (var i = 0; i < NUM_TILES; i++) {
+    for (var i = 0; i < NUM_TILES_TO_MINT; i++) {
       const result = await factoryContract.methods
         .mint(DEFAULT_OPTION_ID, OWNER_ADDRESS)
         .send({ from: OWNER_ADDRESS });
@@ -89,7 +89,7 @@ async function main() {
     );
 
     // TileNFTs issued directly to the owner.
-    for (var i = 0; i < NUM_TILES; i++) {
+    for (var i = 0; i < NUM_TILES_TO_MINT; i++) {
       const result = await nftContract.methods
         .mintTo(OWNER_ADDRESS)
         .send({ from: OWNER_ADDRESS });

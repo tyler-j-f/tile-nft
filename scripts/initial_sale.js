@@ -15,7 +15,7 @@ const NETWORK = process.env.NETWORK;
 const API_KEY = process.env.API_KEY || ""; // API key is optional but useful if you're doing a high volume of requests.
 
 const FIXED_PRICE_OPTION_ID = "0";
-const NUM_FIXED_PRICE_AUCTIONS = 1;
+const NUM_FIXED_PRICE_AUCTIONS = 10;
 const FIXED_PRICE = 0.05;
 
 if (!MNEMONIC || !NODE_API_KEY || !NETWORK || !OWNER_ADDRESS) {
