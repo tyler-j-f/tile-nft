@@ -75,7 +75,7 @@ async function main() {
     ],
     accountAddress: OWNER_ADDRESS,
     numberOfOrders: NUM_DUTCH_AUCTIONS,
-    expirationTime: oneHourExpirationTime,
+    expirationTime: tenMinExpirationTime,
     startAmount: START_PRICE,
     endAmount: END_PRICE
   });
