@@ -15,8 +15,9 @@ const NETWORK = process.env.NETWORK;
 const API_KEY = process.env.API_KEY || ""; // API key is optional but useful if you're doing a high volume of requests.
 
 const FIXED_PRICE_OPTION_ID = "0";
-const NUM_FIXED_PRICE_AUCTIONS = 10;
-const FIXED_PRICE = 0.05;
+const NUM_DUTCH_AUCTIONS = 50;
+const START_PRICE = 10;
+const END_PRICE = 0.05;
 
 if (!MNEMONIC || !NODE_API_KEY || !NETWORK || !OWNER_ADDRESS) {
   console.error(
@@ -62,7 +63,8 @@ const seaport = new OpenSeaPort(
 );
 
 async function main() {
-  // Example: many fixed price auctions for a factory option.
+  const tenMinExpirationTime = Math.round(Date.now() / 1000 + 60 * 10);
+  const oneHourExpirationTime = Math.round(Date.now() / 1000 + 60 * 60);
   console.log("Creating fixed price auctions...");
   const fixedSellOrders = await seaport.createFactorySellOrders({
     assets: [
@@ -72,8 +74,10 @@ async function main() {
       }
     ],
     accountAddress: OWNER_ADDRESS,
-    startAmount: FIXED_PRICE,
-    numberOfOrders: NUM_FIXED_PRICE_AUCTIONS
+    numberOfOrders: NUM_DUTCH_AUCTIONS,
+    expirationTime: oneHourExpirationTime,
+    startAmount: START_PRICE,
+    endAmount: END_PRICE
   });
   console.log(
     `Successfully made ${fixedSellOrders} fixed-price sell orders!\n`
