@@ -3,7 +3,6 @@
 * This project is based off of the OpenSea tutorial for ["opensea-creatures"](https://github.com/ProjectOpenSea/opensea-creatures)
 * There's a metadata NFT server project which goes along with this
   * TileNFT API: https://github.com/tyler-j-f/tile-api
-  * Private currently, please contact me if you would like to view the API code
   * TileNFT API is:
     * written in java
     * Is hosted on google cloud
