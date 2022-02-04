@@ -1,16 +1,25 @@
 ## Tile NFTs
 
-What's included:
+This project is based off of the OpenSea tutorial for ["opensea-creatures"](https://github.com/ProjectOpenSea/opensea-creatures)
 
-### Sample ERC721/ERC1155 Contracts
 
-This includes a very simple sample ERC721 / ERC1155 for the purposes of demonstrating integration with the [OpenSea](https://opensea.io) marketplace. We include a script for minting the items.
-
-Additionally, this contract whitelists the proxy accounts of OpenSea users so that they are automatically able to trade the ERC721 item on OpenSea (without having to pay gas for an additional approval). On OpenSea, each user has a "proxy" account that they control, and is ultimately called by the exchange contracts to trade their items. (Note that this addition does not mean that OpenSea itself has access to the items, simply that the users can list them more easily if they wish to do so)
+### ERC721 Contracts
+This includes a simple ERC721 for the purposes of:
+   * Demonstrating integration with the [OpenSea](https://opensea.io) marketplace
+   * Demonstrating additional functionality can be added on top of the "opensea-creatures" tutorial.
+     * Merging tokens
+       * A user who owns two TileNFT tokens, can "burn" the two tokens to output a third token that they will own.
+       * Burnt tokens will be sent to the null ETH address and will no longer be usable.
+       * The API server will generate traits on the newly minted token that will make it more rare than the two burnt tokens combined. 
+     * Updating metdata
+       * A user can send an update metadata transaction on tokens that they own
+         * The API server will handle any update metadata transactions and make changes to the proper token traits.
+   * Additionally, this contract whitelists the proxy accounts of OpenSea users so that they are automatically able to trade the ERC721 item on OpenSea (without having to pay gas for an additional approval). On OpenSea, each user has a "proxy" account that they control, and is ultimately called by the exchange contracts to trade their items. (Note that this addition does not mean that OpenSea itself has access to the items, simply that the users can list them more easily if they wish to do so)
 
 ### Factory Contracts
 
-In addition to these template 721/1155 contracts, we provide sample factory contracts for running gas-free presales of items that haven't been minted yet. See https://docs.opensea.io/docs/opensea-initial-item-sale-tutorial for more info.
+In addition to the ERC721 contracts, we provide a factory contracts for running gas-free presales of items that haven't been minted yet.
+* See https://docs.opensea.io/docs/opensea-initial-item-sale-tutorial for more info.
 
 ## Requirements
 
@@ -50,7 +59,7 @@ DEPLOY_TILES_FACTORY_CONTRACT=1 yarn truffle deploy --network rinkeby
 
 ### Minting tokens.
 
-After deploying to the Rinkeby network, there will be a contract on Rinkeby that will be viewable on [Rinkeby Etherscan](https://rinkeby.etherscan.io). For example, here is a [recently deployed contract](https://rinkeby.etherscan.io/address/0xeba05c5521a3b81e23d15ae9b2d07524bc453561). You should set this contract address and the address of your Metamask account as environment variables when running the minting script. If a [CreatureFactory was deployed](https://github.com/ProjectOpenSea/opensea-creatures/blob/master/migrations/2_deploy_contracts.js#L38), which the sample deploy steps above do, you'll need to specify its address below as it will be the owner on the NFT contract, and only it will have mint permissions. In that case, you won't need NFT_CONTRACT_ADDRESS, as all we need is the contract with mint permissions here.
+After deploying to the Rinkeby network, there will be a contract on Rinkeby that will be viewable on [Rinkeby Etherscan](https://rinkeby.etherscan.io). For example, here is a [recently deployed contract](https://rinkeby.etherscan.io/address/0xd5bE0b487C687E715f739EF9AE4B3D4001622474). You should set this contract address and the address of your Metamask account as environment variables when running the minting script. If a TileFactory was deployed, which the sample deploy steps above do, you'll need to specify its address below as it will be the owner on the NFT contract, and only it will have mint permissions. In that case, you won't need NFT_CONTRACT_ADDRESS, as all we need is the contract with mint permissions here.
 
 ```
 export OWNER_ADDRESS="<my_address>"
