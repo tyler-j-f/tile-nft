@@ -18,7 +18,6 @@ contract TileFactory is FactoryERC721, Ownable {
         address indexed to,
         uint256 indexed tokenId
     );
-
     event Mint(
         uint256 indexed tokenId
     );
@@ -97,6 +96,20 @@ contract TileFactory is FactoryERC721, Ownable {
     }
 
     /**
+    * Get the max supply of each individual sale option.
+    */
+    function getTokenMaxSupply() private view returns (uint256) {
+        return MAX_TOKEN_SUPPLY;
+    }
+
+    /**
+    * Get the number of sale options.
+    */
+    function getSaleOptionsTotal() private view returns (uint256) {
+        return NUM_SALE_OPTIONS;
+    }
+
+    /**
      * Hack to get things to work automatically on OpenSea.
      * Use transferFrom so the frontend doesn't have to worry about different method names.
      */
@@ -139,19 +152,4 @@ contract TileFactory is FactoryERC721, Ownable {
     function ownerOf(uint256 _tokenId) public view returns (address _owner) {
         return owner();
     }
-
-    /**
-    * Get the max supply of each individual sale option.
-    */
-    function getTokenMaxSupply() private view returns (uint256) {
-        return MAX_TOKEN_SUPPLY;
-    }
-
-    /**
-    * Get the max supply of each individual sale option.
-    */
-    function getSaleOptionsTotal() private view returns (uint256) {
-        return NUM_SALE_OPTIONS;
-    }
-
 }
