@@ -3,7 +3,7 @@
 * View [TileNFT.io](http://tilenft.io/)
 * The smart contracts are based off of the OpenSea tutorial for ["opensea-creatures"](https://github.com/ProjectOpenSea/opensea-creatures)
 * There's a metadata NFT server project which goes along with this
-  * TileNFT API: https://github.com/tyler-j-f/tile-api
+  * [TileNFT API](https://github.com/tyler-j-f/tile-api)
 * This whole project is a work in progress (W.I.P)
   * For this repo:
     * Additional unit tests should be added
