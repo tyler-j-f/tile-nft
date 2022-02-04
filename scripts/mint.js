@@ -7,10 +7,8 @@ const FACTORY_CONTRACT_ADDRESS = process.env.FACTORY_CONTRACT_ADDRESS;
 const NFT_CONTRACT_ADDRESS = process.env.NFT_CONTRACT_ADDRESS;
 const OWNER_ADDRESS = process.env.OWNER_ADDRESS;
 const NETWORK = process.env.NETWORK;
-const NUM_CREATURES = 12;
-const NUM_LOOTBOXES = 4;
+const NUM_TILES_TO_MINT = 120;
 const DEFAULT_OPTION_ID = 0;
-const LOOTBOX_OPTION_ID = 2;
 
 if (!MNEMONIC || !NODE_API_KEY || !OWNER_ADDRESS || !NETWORK) {
   console.error(
@@ -75,21 +73,14 @@ async function main() {
       { gasLimit: "1000000" }
     );
 
-    // Creatures issued directly to the owner.
-    for (var i = 0; i < NUM_CREATURES; i++) {
+    // TileNFTs issued directly to the owner.
+    for (var i = 0; i < NUM_TILES_TO_MINT; i++) {
       const result = await factoryContract.methods
         .mint(DEFAULT_OPTION_ID, OWNER_ADDRESS)
         .send({ from: OWNER_ADDRESS });
-      console.log("Minted creature. Transaction: " + result.transactionHash);
+      console.log("Minted TileNFT. Transaction: " + result.transactionHash);
     }
 
-    // Lootboxes issued directly to the owner.
-    for (var i = 0; i < NUM_LOOTBOXES; i++) {
-      const result = await factoryContract.methods
-        .mint(LOOTBOX_OPTION_ID, OWNER_ADDRESS)
-        .send({ from: OWNER_ADDRESS });
-      console.log("Minted lootbox. Transaction: " + result.transactionHash);
-    }
   } else if (NFT_CONTRACT_ADDRESS) {
     const nftContract = new web3Instance.eth.Contract(
       NFT_ABI,
@@ -97,12 +88,12 @@ async function main() {
       { gasLimit: "1000000" }
     );
 
-    // Creatures issued directly to the owner.
-    for (var i = 0; i < NUM_CREATURES; i++) {
+    // TileNFTs issued directly to the owner.
+    for (var i = 0; i < NUM_TILES_TO_MINT; i++) {
       const result = await nftContract.methods
         .mintTo(OWNER_ADDRESS)
         .send({ from: OWNER_ADDRESS });
-      console.log("Minted creature. Transaction: " + result.transactionHash);
+      console.log("Minted TileNFT. Transaction: " + result.transactionHash);
     }
   } else {
     console.error(

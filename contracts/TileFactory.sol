@@ -5,10 +5,9 @@ pragma solidity ^0.8.0;
 import "openzeppelin-solidity/contracts/access/Ownable.sol";
 import "openzeppelin-solidity/contracts/utils/Strings.sol";
 import "./IFactoryERC721.sol";
-import "./Creature.sol";
-import "./CreatureLootBox.sol";
+import "./Tile.sol";
 
-contract CreatureFactory is FactoryERC721, Ownable {
+contract TileFactory is FactoryERC721, Ownable {
     using Strings for string;
 
     /*
@@ -19,37 +18,21 @@ contract CreatureFactory is FactoryERC721, Ownable {
         address indexed to,
         uint256 indexed tokenId
     );
-
-    /*
-    * TODO: Do we need both the tokenId and the toAddress?
-    * Clients could likely just use the tokenId and query the NFTContractAddress for the toAddress
-    */
     event Mint(
-        uint256 indexed saleOptionSupplyPostMint,
-        uint256 indexed saleOptionId,
         uint256 indexed tokenId
     );
 
     /*
     * STORAGE
     */
-    /*
-    * Mapping from a sale _optionId to the total number of tokens minted by that sale option.
-    * TODO: Based on the final number of sale options and max token supply, we can probably change the uint size.
-    */
-    mapping(uint256 => uint256) private _mintedTokens;
     address public proxyRegistryAddress;
     address public nftAddress;
 
     /*
     * CONSTANTS
     */
-    string public BASE_URI = "https://creatures-api.opensea.io/api/factory/";
-    uint256 NUM_SUBTILES = 4;
-    uint256 NUM_SUBTILE_COLORS = 2;
-    uint256 NUM_SUBTILE_SHAPES = 1;
-
-    uint256 NUM_TILES_PER_SALE_OPTION = 3;
+    uint256 MAX_TOKEN_SUPPLY = 10000;
+    uint256 NUM_SALE_OPTIONS = 1;
 
     constructor(address _proxyRegistryAddress, address _nftAddress) {
         proxyRegistryAddress = _proxyRegistryAddress;
@@ -58,11 +41,11 @@ contract CreatureFactory is FactoryERC721, Ownable {
     }
 
     function name() override external pure returns (string memory) {
-        return "OpenSeaCreature Item Sale";
+        return "TileNFT Sale";
     }
 
     function symbol() override external pure returns (string memory) {
-        return "CPF";
+        return "TileNftSale";
     }
 
     function supportsFactoryInterface() override public pure returns (bool) {
@@ -70,7 +53,7 @@ contract CreatureFactory is FactoryERC721, Ownable {
     }
 
     function numOptions() override public view returns (uint256) {
-        return NUM_SUBTILES * NUM_SUBTILE_COLORS * NUM_SUBTILE_SHAPES;
+        return getSaleOptionsTotal();
     }
 
     function transferOwnership(address newOwner) override public onlyOwner {
@@ -93,25 +76,37 @@ contract CreatureFactory is FactoryERC721, Ownable {
                 owner() == _msgSender()
         );
         require(canMint(_optionId));
-        Creature openSeaCreature = Creature(nftAddress);
-        openSeaCreature.mintTo(_toAddress);
-        uint256 numMintedTokensPerSale = _mintedTokens[_optionId];
-        numMintedTokensPerSale++;
-        _mintedTokens[_optionId] = numMintedTokensPerSale;
-        emit Mint(_mintedTokens[_optionId], _optionId, openSeaCreature.totalSupply());
+        Tile tileContract = Tile(nftAddress);
+        uint256 nextTokenId = tileContract._getNextTokenId();
+        tileContract.mintTo(_toAddress);
+        emit Mint(nextTokenId);
     }
 
     function canMint(uint256 _optionId) override public view returns (bool) {
-        if (_optionId >= numOptions()) {
+        if (_optionId >= getSaleOptionsTotal()) {
             return false;
         }
-        Creature openSeaCreature = Creature(nftAddress);
-        uint256 currentCreatureSupply = openSeaCreature.totalSupply();
-        return _mintedTokens[_optionId] < getSaleOptionMaxSupply();
+        Tile tileContract = Tile(nftAddress);
+        return tileContract.totalSupply() <= (getTokenMaxSupply() - 1);
     }
 
     function tokenURI(uint256 _optionId) override external view returns (string memory) {
-        return string(abi.encodePacked(BASE_URI, Strings.toString(_optionId)));
+        Tile tileContract = Tile(nftAddress);
+        return string(abi.encodePacked(tileContract.baseMetadataURI(), "/api/sales/get/", Strings.toString(_optionId)));
+    }
+
+    /**
+    * Get the max supply of each individual sale option.
+    */
+    function getTokenMaxSupply() private view returns (uint256) {
+        return MAX_TOKEN_SUPPLY;
+    }
+
+    /**
+    * Get the number of sale options.
+    */
+    function getSaleOptionsTotal() private view returns (uint256) {
+        return NUM_SALE_OPTIONS;
     }
 
     /**
@@ -156,12 +151,5 @@ contract CreatureFactory is FactoryERC721, Ownable {
      */
     function ownerOf(uint256 _tokenId) public view returns (address _owner) {
         return owner();
-    }
-
-    /**
-    * Get the max supply of each individual sale option.
-    */
-    function getSaleOptionMaxSupply() private view returns (uint256) {
-        return NUM_TILES_PER_SALE_OPTION;
     }
 }

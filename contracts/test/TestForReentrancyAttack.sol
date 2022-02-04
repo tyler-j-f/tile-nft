@@ -4,9 +4,6 @@ pragma solidity ^0.8.0;
 
 import "openzeppelin-solidity/contracts/token/ERC1155/IERC1155Receiver.sol";
 
-import "../CreatureAccessoryFactory.sol";
-
-
 contract TestForReentrancyAttack is IERC1155Receiver {
     // bytes4(keccak256("onERC1155Received(address,address,uint256,uint256,bytes)"))
     bytes4 constant internal ERC1155_RECEIVED_SIG = 0xf23a6e61;
@@ -27,36 +24,19 @@ contract TestForReentrancyAttack is IERC1155Receiver {
         totalToMint = 3;
     }
 
-    /*function attack(uint256 _totalToMint) external {
-        require(_totalToMint >= 2, "_totalToMint must be >= 2");
-        totalToMint = _totalToMint;
-        CreatureAccessoryFactory(factoryAddress).mint(1, address(this), 1, "");
-        }*/
-
-    // We attempt a reentrancy attack here by recursively calling the
-    // CreatureAccessoryFactory that created the CreatureAccessory ERC1155 token
-    // that we are receiving here.
-    // We expect this to fail if the CreatureAccessoryFactory.mint() function
-    // defends against reentrancy.
-
+    // TODO: Remove this method if possible. The method is really a noop
     function onERC1155Received(
         address /*_operator*/,
         address /*_from*/,
-        uint256 _id,
+        uint256 /*_id*/,
         uint256 /*_amount*/,
         bytes calldata /*_data*/
     )
         override
         external
+        pure
         returns(bytes4)
     {
-        uint256 balance = IERC1155(msg.sender).balanceOf(address(this), _id);
-        if(balance < totalToMint)
-        {
-            // 1 is the factory lootbox option, not the token id
-            CreatureAccessoryFactory(factoryAddress)
-                .mint(1, address(this), 1, "");
-        }
         return ERC1155_RECEIVED_SIG;
     }
 
