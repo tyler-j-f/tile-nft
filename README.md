@@ -1,12 +1,18 @@
 ## Tile NFTs
 
+* View [TileNFT.io](http://tilenft.io/)
 * This project is based off of the OpenSea tutorial for ["opensea-creatures"](https://github.com/ProjectOpenSea/opensea-creatures)
 * There's a metadata NFT server project which goes along with this
   * TileNFT API: https://github.com/tyler-j-f/tile-api
-  * TileNFT API is:
-    * written in java
-    * Is hosted on google cloud
-    * Containerized and deployed via kubernetes (k8s)
+* This whole project is a work in progress (W.I.P)
+  * For this repo:
+    * Additional unit tests should be added
+    * Code should be cleaned up.
+    * Additional comments should be added in some places
+  * For the TileAPI metadata server repo:
+    * Additional comments should be added (in a lot of places)
+    * Code should be cleaned up
+    * Checkstyle warnings should be resolved
 
 ### ERC721 Contracts
 This includes a simple ERC721 for the purposes of:
