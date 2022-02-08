@@ -66,6 +66,7 @@ async function main() {
   const tenMinExpirationTime = Math.round(Date.now() / 1000 + 60 * 10);
   const oneHourExpirationTime = Math.round(Date.now() / 1000 + 60 * 60);
   const twentyFourHourExpirationTime = Math.round(Date.now() / 1000 + 60 * 60 * 24);
+  const oneWeekExpirationTime = Math.round(Date.now() / 1000 + 60 * 60 * 24 * 7);
   console.log("Creating fixed price auctions...");
   const fixedSellOrders = await seaport.createFactorySellOrders({
     assets: [
@@ -76,7 +77,7 @@ async function main() {
     ],
     accountAddress: OWNER_ADDRESS,
     numberOfOrders: NUM_DUTCH_AUCTIONS,
-    expirationTime: twentyFourHourExpirationTime,
+    expirationTime: oneWeekExpirationTime,
     startAmount: START_PRICE,
     endAmount: END_PRICE
   });
