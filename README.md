@@ -14,6 +14,13 @@
     * Code should be cleaned up
     * Checkstyle warnings should be resolved
 
+# Testnet NFTs
+This application is currently deployed on the [Rinkeby](https://www.rinkeby.io/) testnet
+* The minted TileNFTs can be viewed on [TileNFT.io](http://tilenft.io/)
+* The minted TileNFTs can be viewed on [Opensea](https://testnets.opensea.io/collection/tilenft-1)
+* Here is the [NFT contract on Etherscan](https://rinkeby.etherscan.io/address/0xd5bE0b487C687E715f739EF9AE4B3D4001622474)
+* Here is the [NFT sale contract on Etherscan](https://rinkeby.etherscan.io/address/0xcBff5b575725857Bad51b50045e4e3Dd06a22c6E)
+
 ### ERC721 Contracts
 This includes a simple ERC721 for the purposes of:
    * Demonstrating integration with the [OpenSea](https://opensea.io) marketplace
